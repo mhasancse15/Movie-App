@@ -1,10 +1,15 @@
 package com.mahmudul.movieapp.repository
 
-import com.mahmudul.movieapp.network.ApiHelper
-import com.mahmudul.movieapp.network.ApiService
+import com.mahmudul.movieapp.model.MovieResponse
+import com.mahmudul.movieapp.network.MoviesInterface
+import retrofit2.Response
 import javax.inject.Inject
 
-class MovieRepository @Inject constructor(val apiService: ApiService, private val apiHelper: ApiHelper) {
+class MovieRepository @Inject constructor(val moviesInterface: MoviesInterface) {
+
+   suspend fun getPopularMovies(apiKey: String, s: String, type: String, pageNo: String): Response<MovieResponse>{
+       return moviesInterface.getPopularMovies( apiKey, s, type, pageNo)
+   }
 
 
 }

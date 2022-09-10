@@ -1,4 +1,4 @@
-package com.mahmudul.movieapp.ui.helper
+package com.mahmudul.movieapp.utils
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver

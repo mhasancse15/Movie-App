@@ -14,10 +14,4 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="TextView_18_almostBlack_normal" parent="@android:style/TextAppearance.Small">
-
-        <item name="android:textColor">@color/tuna</item>
-        <item name="android:textSize">@dimen/textSize_18sp</item>
-        <item name="android:textStyle">normal</item>
-    </style>
 </resources>
