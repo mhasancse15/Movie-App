@@ -98,6 +98,14 @@ dependencies {
     //image slider
     implementation 'com.github.smarteist:autoimageslider:1.4.0'
 
+    //Exoplayer
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.12.2'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.12.2'
+    implementation 'com.google.android.exoplayer:exoplayer-hls:2.12.2'
+    implementation 'com.google.android.exoplayer:exoplayer:2.12.2'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.12.2'
+    implementation 'com.google.android.exoplayer:extension-ima:2.12.2'
+
     //unit testing
     testImplementation 'junit:junit:4.13.2'
 

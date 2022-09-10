@@ -24,5 +24,12 @@
             android:name="imdbID"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_movieDetailsFragment_to_videoPlayerFragment"
+            app:destination="@id/videoPlayerFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/videoPlayerFragment"
+        android:name="com.mahmudul.movieapp.ui.videoplayer.VideoPlayerFragment"
+        android:label="VideoPlayerFragment" />
 </navigation>

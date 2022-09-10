@@ -22,6 +22,7 @@ class MovieDetailsViewModel @Inject constructor(private val movieRepository: Mov
 
     private val _movieDetailsResponse = MutableLiveData<Resource<MovieDetail>>()
     var movieDetailsResponse: LiveData<Resource<MovieDetail>> = _movieDetailsResponse
+    var movieDetailsModel: MovieDetail? = null
 
     fun getMovieDetailsData(movieId: String){
         _movieDetailsResponse.postValue(Resource.LOADING())
