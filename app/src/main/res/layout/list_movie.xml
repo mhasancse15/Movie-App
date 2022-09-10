@@ -5,9 +5,16 @@
 
     <data>
 
+        <import type="com.mahmudul.movieapp.model.Search" />
+
+        <variable
+            name="movie"
+            type="Search" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rootView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp">
@@ -26,7 +33,7 @@
             android:id="@+id/movieNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@{movie.title}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />

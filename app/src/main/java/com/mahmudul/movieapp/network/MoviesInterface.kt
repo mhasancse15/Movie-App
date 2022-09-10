@@ -1,5 +1,6 @@
 package com.mahmudul.movieapp.network
 
+import com.mahmudul.movieapp.model.MovieDetail
 import com.mahmudul.movieapp.model.MovieResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -9,11 +10,30 @@ import retrofit2.http.Query
 
 interface MoviesInterface {
 
-    @GET("/")
+    @GET("?type=movie")
     suspend fun getPopularMovies(
         @Query("apikey") apiKey: String?,
         @Query("s") s: String?,
-        @Query("type") type: String?,
         @Query("page") page: String?
     ): Response<MovieResponse>
+
+    @GET("?type=movie")
+    suspend fun getSearchResultData(
+        @Query(value = "s") searchTitle: String,
+        @Query(value = "apiKey") apiKey: String,
+        @Query(value = "page") pageIndex: Int
+    ): Response<MovieResponse>
+
+    @GET("?type=movie")
+    suspend fun getBatmanMovies(
+        @Query(value = "s") searchTitle: String,
+        @Query(value = "apiKey") apiKey: String,
+        @Query(value = "page") page: Int,
+    ): MovieResponse
+
+    @GET("?plot=full")
+    suspend fun getMovieDetailData(
+        @Query(value = "t") title: String,
+        @Query(value = "apiKey") apiKey: String
+    ): Response<MovieDetail>
 }

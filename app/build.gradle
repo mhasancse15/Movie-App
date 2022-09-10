@@ -95,7 +95,7 @@ dependencies {
     implementation "androidx.room:room-ktx:$room_version"
 
     //image slider
-   // implementation 'com.github.smarteist:autoimageslider:1.4.0'
+    implementation 'com.github.smarteist:autoimageslider:1.4.0'
 
     //unit testing
     testImplementation 'junit:junit:4.13.2'
