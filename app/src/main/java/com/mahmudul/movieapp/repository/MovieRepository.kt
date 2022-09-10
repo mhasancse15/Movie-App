@@ -5,18 +5,18 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
+import com.mahmudul.movieapp.model.MovieDetail
 import com.mahmudul.movieapp.model.MovieResponse
 import com.mahmudul.movieapp.network.MoviesInterface
-import com.mahmudul.movieapp.adapter.MoviePagingAdapter
 import com.mahmudul.movieapp.model.Search
-import com.mahmudul.movieapp.paging.MoviePagingSource
+import com.mahmudul.movieapp.paging.BatmanMoviePagingSource
 import retrofit2.Response
 import javax.inject.Inject
 
 class MovieRepository @Inject constructor(val moviesInterface: MoviesInterface) {
 
-   suspend fun getPopularMovies(apiKey: String, s: String, pageNo: String): Response<MovieResponse>{
-       return moviesInterface.getPopularMovies( apiKey, s, pageNo)
+   suspend fun getBannerMovies(apiKey: String, s: String, pageNo: String): Response<MovieResponse>{
+       return moviesInterface.getBannerMovies( apiKey, s, pageNo)
    }
 
     fun getBatmanMovies(): LiveData<PagingData<Search>> = Pager(
@@ -26,10 +26,13 @@ class MovieRepository @Inject constructor(val moviesInterface: MoviesInterface) 
             enablePlaceholders = false
         ),
         pagingSourceFactory = {
-            MoviePagingSource(moviesInterface)
+            BatmanMoviePagingSource(moviesInterface)
         }
 
     ).liveData
 
+    suspend fun getMovieDetails(movieId: String, apiKey: String): Response<MovieDetail>{
+        return moviesInterface.getMovieDetailData(movieId, apiKey)
+    }
 
 }

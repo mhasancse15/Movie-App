@@ -36,10 +36,6 @@ class MoviePagingAdapter(val adapterClicklListioners: AdapterClicklListioners) :
         val item = getItem(position)
         holder.viewDataBinding.setVariable(BR.movie, item)
 
-        Glide.with(holder.viewDataBinding.imageView.context).load(item!!.poster)
-            .into(holder.viewDataBinding.imageView)
-
-
         holder.viewDataBinding.rootView.setOnClickListener {
             adapterClicklListioners.clickListioners(item)
         }

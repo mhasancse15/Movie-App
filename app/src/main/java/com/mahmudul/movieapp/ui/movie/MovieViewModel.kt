@@ -19,20 +19,27 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieViewModel @Inject constructor(private val movieRepository: MovieRepository): ViewModel() {
 
-    private val _popularMovies = MutableLiveData<Resource<MovieResponse>>()
-    val popularMovies: LiveData<Resource<MovieResponse>> = _popularMovies
-
+    lateinit var bannerData: MutableLiveData<Resource<MovieResponse>>
+    var bannerResponseData: MovieResponse? = null
 
     val getBatmanMovieList: LiveData<PagingData<Search>> = movieRepository.getBatmanMovies()
 
-    fun getPopularMovies(){
-        _popularMovies.postValue(Resource.LOADING())
-        viewModelScope.launch {
-            val response = movieRepository.getPopularMovies(Constants.API_KEY, "top", "1")
-            _popularMovies.postValue(handleResponse(response))
-        }
-    }
+    fun getBannerList(): LiveData<Resource<MovieResponse>> {
+        bannerData = MutableLiveData<Resource<MovieResponse>>()
 
+        viewModelScope.launch {
+            // Coroutine that will be canceled when the ViewModel is cleared.
+            bannerData.postValue(Resource.LOADING())
+                movieRepository.getBannerMovies(Constants.API_KEY, "top", "1").let {
+                    if (it.isSuccessful) {
+                        bannerData.postValue(handleResponse(it))
+                        bannerResponseData=it.body()
+                    } else bannerData.postValue(Resource.Error(it.code().toString()))
+
+            }
+        }
+        return bannerData
+    }
 
     private fun handleResponse(response: Response<MovieResponse>): Resource<MovieResponse> {
         if (response.isSuccessful) {
@@ -43,4 +50,6 @@ class MovieViewModel @Inject constructor(private val movieRepository: MovieRepos
         return Resource.Error(message = response.errorBody().toString())
     }
 
+
 }
+

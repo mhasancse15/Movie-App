@@ -3,8 +3,6 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
-        maven { url 'https://maven.google.com/' }
-        maven {url "https://jitpack.io"}
     }
 }
 dependencyResolutionManagement {
@@ -12,6 +10,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        jcenter()
+        maven { url 'https://maven.google.com/' }
+        maven {url "https://jitpack.io"}
     }
 }
 rootProject.name = "MovieApp-omdbapi"

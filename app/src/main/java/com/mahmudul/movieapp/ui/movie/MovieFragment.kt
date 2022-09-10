@@ -29,13 +29,13 @@ class MovieFragment : Fragment(), AdapterClicklListioners {
     private lateinit var binding: FragmentMovieBinding
     val viewModel: MovieViewModel by viewModels()
 
-    private lateinit var movieAdapter: MoviePagingAdapter
+    private lateinit var batmanMovieAdapter: MoviePagingAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        movieAdapter = MoviePagingAdapter(this)
+        batmanMovieAdapter = MoviePagingAdapter(this)
 
     }
 
@@ -51,13 +51,14 @@ class MovieFragment : Fragment(), AdapterClicklListioners {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentMovieBinding.bind(view)
+        binding.clickListener = this
         recyclerviewItemScreen()
 
         viewModel.getBatmanMovieList.observe(viewLifecycleOwner) {
-            movieAdapter.submitData(lifecycle, it)
+            batmanMovieAdapter.submitData(lifecycle, it)
         }
 
-        movieAdapter.addLoadStateListener { state ->
+        batmanMovieAdapter.addLoadStateListener { state ->
 
             when (state.refresh) {
                 is LoadState.Loading -> {
@@ -74,15 +75,16 @@ class MovieFragment : Fragment(), AdapterClicklListioners {
             }
 
         }
-        binding.movieRecyclerView.adapter = movieAdapter
+        binding.movieRecyclerView.adapter = batmanMovieAdapter
 
 
-        viewModel.popularMovies.observe(viewLifecycleOwner) { dataHandler ->
+        this.viewModel.getBannerList().observe(viewLifecycleOwner) { dataHandler ->
             when (dataHandler) {
 
                 is Resource.SUCCESS -> {
                     Log.d("API", dataHandler.data?.Search?.size.toString())
                     LogData("onViewCreated: SUCCESS " + dataHandler.message)
+                    binding.viewModel = viewModel
                 }
                 is Resource.Error -> {
                     LogData("onViewCreated: Error " + dataHandler.message)
@@ -93,8 +95,6 @@ class MovieFragment : Fragment(), AdapterClicklListioners {
                 }
             }
         }
-
-        viewModel.getPopularMovies()
 
     }
 
@@ -111,8 +111,13 @@ class MovieFragment : Fragment(), AdapterClicklListioners {
 
     }
 
-    override fun clickListioners(article: Search?) {
-       // TODO("Not yet implemented")
+    override fun clickListioners(movie: Search?) {
+        findNavController().navigate(
+            R.id.action_movieFragment_to_movieDetailsFragment,
+            bundleOf("imdbID" to movie?.imdbID.toString())
+        )
+
+        LogData(movie?.imdbID.toString())
     }
 
 

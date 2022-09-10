@@ -11,7 +11,7 @@ import retrofit2.http.Query
 interface MoviesInterface {
 
     @GET("?type=movie")
-    suspend fun getPopularMovies(
+    suspend fun getBannerMovies(
         @Query("apikey") apiKey: String?,
         @Query("s") s: String?,
         @Query("page") page: String?
@@ -31,9 +31,19 @@ interface MoviesInterface {
         @Query(value = "page") page: Int,
     ): MovieResponse
 
+    @GET("?type=movie")
+    suspend fun getLatestMovies(
+        @Query(value = "s") searchTitle: String,
+        @Query(value = "apiKey") apiKey: String,
+        @Query(value = "type") type: String,
+        @Query(value = "y") year: String,
+        @Query(value = "page") page: Int,
+        @Query("pageSize") pageSize: Int
+    ): MovieResponse
+
     @GET("?plot=full")
     suspend fun getMovieDetailData(
-        @Query(value = "t") title: String,
+        @Query(value = "i") movieId: String,
         @Query(value = "apiKey") apiKey: String
     ): Response<MovieDetail>
 }

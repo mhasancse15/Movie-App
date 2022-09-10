@@ -4,5 +4,5 @@ import com.mahmudul.movieapp.model.Search
 
 
 interface AdapterClicklListioners {
-    fun clickListioners(article: Search?)
+    fun clickListioners(movie: Search?)
 }
