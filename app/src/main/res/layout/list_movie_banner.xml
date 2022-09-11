@@ -15,9 +15,14 @@
             type="com.mahmudul.movieapp.adapter.AdapterClicklListioners" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            android:layout_margin="2dp"
+            android:id="@+id/card_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="10dp">
         <ImageView
             android:id="@+id/rowBannerImageView"
             android:layout_width="match_parent"
@@ -28,6 +33,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.cardview.widget.CardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

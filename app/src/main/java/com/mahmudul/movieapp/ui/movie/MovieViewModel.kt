@@ -29,7 +29,7 @@ class MovieViewModel @Inject constructor( private val movieRepository: MovieRepo
         viewModelScope.launch {
             // Coroutine that will be canceled when the ViewModel is cleared.
             bannerData.postValue(Resource.LOADING())
-                movieRepository.getBannerMovies(Constants.API_KEY, "top", "1").let {
+                movieRepository.getBannerMovies(Constants.API_KEY, "avengers", "1").let {
                     if (it.isSuccessful) {
                         bannerData.postValue(handleResponse(it))
                         bannerResponseData=it.body()
