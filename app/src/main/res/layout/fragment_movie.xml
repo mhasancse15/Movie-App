@@ -58,6 +58,19 @@
             app:layout_constraintTop_toBottomOf="@+id/movieFragmentImageSlider"
             />
 
+        <TextView
+            android:id="@+id/moreMovieTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="10dp"
+            android:text="More >"
+            android:textSize="15sp"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/movieFragmentImageSlider"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movieRecyclerView"
             android:layout_width="match_parent"

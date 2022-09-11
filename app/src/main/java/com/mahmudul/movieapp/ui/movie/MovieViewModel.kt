@@ -1,10 +1,9 @@
 package com.mahmudul.movieapp.ui.movie
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.util.Log
+import androidx.lifecycle.*
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.mahmudul.movieapp.model.MovieResponse
 import com.mahmudul.movieapp.model.Search
 import com.mahmudul.movieapp.repository.MovieRepository
@@ -17,12 +16,12 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class MovieViewModel @Inject constructor(private val movieRepository: MovieRepository): ViewModel() {
+class MovieViewModel @Inject constructor( private val movieRepository: MovieRepository): ViewModel() {
 
     lateinit var bannerData: MutableLiveData<Resource<MovieResponse>>
     var bannerResponseData: MovieResponse? = null
 
-    val getBatmanMovieList: LiveData<PagingData<Search>> = movieRepository.getBatmanMovies()
+    val getBatmanMovieList: LiveData<PagingData<Search>> = movieRepository.getBatmanMovies().cachedIn(viewModelScope)
 
     fun getBannerList(): LiveData<Resource<MovieResponse>> {
         bannerData = MutableLiveData<Resource<MovieResponse>>()

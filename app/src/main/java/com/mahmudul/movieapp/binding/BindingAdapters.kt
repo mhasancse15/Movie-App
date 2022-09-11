@@ -37,15 +37,14 @@ fun loadImage(view: ImageView, url: String?) {
 }
 
 
-
 @BindingAdapter(value = ["bind:slideBannerResponse", "bind:bannerClickListener"])
 fun slideBanner(
     sliderView: SliderView,
     bannerResponse: MovieResponse?,
     bannerClickListener: AdapterClicklListioners?
 ) {
-        if (bannerResponse != null && bannerResponse.Search.isNotEmpty()) {
-            val bannerList: ArrayList<Search> = bannerResponse.Search as ArrayList<Search>
+    if (bannerResponse != null && bannerResponse.Search.isNotEmpty()) {
+        val bannerList: ArrayList<Search> = bannerResponse.Search as ArrayList<Search>
         val adapter = BannerSliderAdapter(
             bannerList.subList(1, 6),
             bannerClickListener!!

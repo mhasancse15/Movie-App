@@ -1,7 +1,6 @@
-package com.mahmudul.movieapp.ui.movie
+package com.mahmudul.movieapp.ui.moremovies
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,32 +10,26 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.mahmudul.movieapp.R
 import com.mahmudul.movieapp.adapter.AdapterClicklListioners
 import com.mahmudul.movieapp.adapter.MoviePagingAdapter
+import com.mahmudul.movieapp.databinding.FragmentMoreMoviesBinding
 import com.mahmudul.movieapp.databinding.FragmentMovieBinding
 import com.mahmudul.movieapp.model.Search
+import com.mahmudul.movieapp.ui.movie.MovieViewModel
 import com.mahmudul.movieapp.utils.LogData
-import com.mahmudul.movieapp.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
-class MovieFragment : Fragment(), AdapterClicklListioners {
-
-    private lateinit var binding: FragmentMovieBinding
-    val viewModel: MovieViewModel by viewModels()
+class MoreMoviesFragment : Fragment() , AdapterClicklListioners {
+    private lateinit var binding: FragmentMoreMoviesBinding
+    val viewModel: MoreMovieViewModel by viewModels()
 
     private lateinit var batmanMovieAdapter: MoviePagingAdapter
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         batmanMovieAdapter = MoviePagingAdapter(this)
-
     }
 
     override fun onCreateView(
@@ -44,15 +37,14 @@ class MovieFragment : Fragment(), AdapterClicklListioners {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movie, container, false)
+        return inflater.inflate(R.layout.fragment_more_movies, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = FragmentMovieBinding.bind(view)
+        binding = FragmentMoreMoviesBinding.bind(view)
         binding.clickListener = this
-        recyclerviewItemScreen()
+
 
         viewModel.getBatmanMovieList.observe(viewLifecycleOwner) {
             batmanMovieAdapter.submitData(lifecycle, it)
@@ -75,56 +67,16 @@ class MovieFragment : Fragment(), AdapterClicklListioners {
             }
 
         }
-        binding.movieRecyclerView.adapter = batmanMovieAdapter
-
-
-        this.viewModel.getBannerList().observe(viewLifecycleOwner) { dataHandler ->
-            when (dataHandler) {
-
-                is Resource.SUCCESS -> {
-                    Log.d("API", dataHandler.data?.Search?.size.toString())
-                    LogData("onViewCreated: SUCCESS " + dataHandler.message)
-                    binding.viewModel = viewModel
-                }
-                is Resource.Error -> {
-                    LogData("onViewCreated: Error " + dataHandler.message)
-                }
-                is Resource.LOADING -> {
-                    LogData("onViewCreated: LOADING..")
-
-                }
-            }
-        }
-
-        binding.moreMovieTextView.setOnClickListener{
-            findNavController().navigate(
-                R.id.action_movieFragment_to_moreMoviesFragment
-            )
-        }
-
-    }
-
-    private fun recyclerviewItemScreen() {
-        binding.movieRecyclerView.layoutManager = object : LinearLayoutManager(
-            context,
-            HORIZONTAL, false
-        ) {
-            override fun checkLayoutParams(lp: RecyclerView.LayoutParams): Boolean {
-                lp.width = (width / 3.2).toInt()
-                return true
-            }
-        }
-
+        binding.moreMoviePreViewRecycler.adapter = batmanMovieAdapter
+       // binding.viewModel = viewModel
     }
 
     override fun clickListioners(movie: Search?) {
         findNavController().navigate(
-            R.id.action_movieFragment_to_movieDetailsFragment,
+            R.id.action_moreMoviesFragment_to_movieDetailsFragment,
             bundleOf("imdbID" to movie?.imdbID.toString())
         )
 
         LogData(movie?.imdbID.toString())
     }
-
-
 }
