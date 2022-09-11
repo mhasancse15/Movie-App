@@ -1,7 +1,6 @@
 package com.mahmudul.movieapp.ui.videoplayer
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.Bundle

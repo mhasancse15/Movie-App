@@ -16,6 +16,7 @@ import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnima
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 @BindingAdapter("bind:loadImage")
@@ -43,10 +44,10 @@ fun slideBanner(
     bannerResponse: MovieResponse?,
     bannerClickListener: AdapterClicklListioners?
 ) {
-    if (bannerResponse != null && !bannerResponse.Search.isNullOrEmpty()) {
-
+        if (bannerResponse != null && bannerResponse.Search.isNotEmpty()) {
+            val bannerList: ArrayList<Search> = bannerResponse.Search as ArrayList<Search>
         val adapter = BannerSliderAdapter(
-            bannerResponse.Search as ArrayList<Search>,
+            bannerList.subList(1, 6),
             bannerClickListener!!
         )
         sliderView.setSliderAdapter(adapter)

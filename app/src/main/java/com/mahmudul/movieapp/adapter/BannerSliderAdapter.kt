@@ -6,7 +6,7 @@ import com.mahmudul.movieapp.databinding.ListMovieBannerBinding
 import com.mahmudul.movieapp.model.Search
 import com.smarteist.autoimageslider.SliderViewAdapter
  class BannerSliderAdapter(
-    private var bannerList: ArrayList<Search>,
+    private var bannerList: List<Search>,
      private val bannerClickListener: AdapterClicklListioners
 ) :
     SliderViewAdapter<BannerSliderAdapter.BannerViewHolder>() {
