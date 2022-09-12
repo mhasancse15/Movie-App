@@ -93,6 +93,11 @@ class MovieDetailsFragment : Fragment(){
                 R.id.action_movieDetailsFragment_to_videoPlayerFragment)
         }
 
+        binding.movieDetailsFragmentTopLayout.toolbarTitle.text = "More Movie"
+        binding.movieDetailsFragmentTopLayout.toolbarBack.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
     }
 
 

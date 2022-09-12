@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -30,6 +31,7 @@ class MoreMoviesFragment : Fragment() , AdapterClicklListioners {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         batmanMovieAdapter = MoviePagingAdapter(this)
+
     }
 
     override fun onCreateView(
@@ -44,6 +46,13 @@ class MoreMoviesFragment : Fragment() , AdapterClicklListioners {
 
         binding = FragmentMoreMoviesBinding.bind(view)
         binding.clickListener = this
+
+        binding.moreMovieFragmentTopLayout.toolbarTitle.text = "More Movie"
+        binding.moreMovieFragmentTopLayout.toolbarBack.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
+
 
 
         viewModel.getBatmanMovieList.observe(viewLifecycleOwner) {
@@ -68,6 +77,8 @@ class MoreMoviesFragment : Fragment() , AdapterClicklListioners {
 
         }
         binding.moreMoviePreViewRecycler.adapter = batmanMovieAdapter
+
+
        // binding.viewModel = viewModel
     }
 

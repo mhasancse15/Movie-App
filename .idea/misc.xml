@@ -3,13 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2796875" />
+        <entry key="app/src/main/res/drawable/back_arrow.xml" value="0.107" />
+        <entry key="app/src/main/res/drawable/upper_bg.xml" value="0.107" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1574074074074074" />
+        <entry key="app/src/main/res/layout/custom_toolbar.xml" value="0.2786458333333333" />
         <entry key="app/src/main/res/layout/fragment_more_movies.xml" value="0.23697916666666666" />
-        <entry key="app/src/main/res/layout/fragment_movie.xml" value="0.265625" />
-        <entry key="app/src/main/res/layout/fragment_movie_details.xml" value="0.265625" />
-        <entry key="app/src/main/res/layout/fragment_video_player.xml" value="0.3578125" />
+        <entry key="app/src/main/res/layout/fragment_movie.xml" value="0.1574074074074074" />
+        <entry key="app/src/main/res/layout/fragment_movie_details.xml" value="0.1574074074074074" />
+        <entry key="app/src/main/res/layout/fragment_video_player.xml" value="0.1574074074074074" />
         <entry key="app/src/main/res/layout/list_movie.xml" value="0.2786458333333333" />
         <entry key="app/src/main/res/layout/list_movie_banner.xml" value="0.2425249169435216" />
+        <entry key="app/src/main/res/layout/test.xml" value="0.2786458333333333" />
       </map>
     </option>
   </component>

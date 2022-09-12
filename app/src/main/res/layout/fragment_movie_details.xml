@@ -13,28 +13,35 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
         tools:context=".ui.details.MovieDetailsFragment">
+
+        <include
+            android:id="@+id/movieDetailsFragmentTopLayout"
+            layout="@layout/custom_toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <androidx.cardview.widget.CardView
-            android:layout_margin="2dp"
             android:id="@+id/card_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            app:cardCornerRadius="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:cardCornerRadius="10dp">
+            app:layout_constraintTop_toBottomOf="@+id/movieDetailsFragmentTopLayout">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="120dp"
                 android:layout_height="150dp"
                 android:scaleType="fitXY"
-                bind:loadImage="@{viewModel.poster}"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                bind:loadImage="@{viewModel.poster}"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
         </androidx.cardview.widget.CardView>
 
@@ -47,11 +54,10 @@
             android:text="@{viewModel.title}"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/card_item"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toBottomOf="@+id/movieDetailsFragmentTopLayout" />
         <TextView
             android:id="@+id/releasedDate"
             android:layout_width="0dp"
@@ -91,7 +97,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/card_item"
-            app:layout_constraintTop_toBottomOf="@+id/releasedDate"
+            app:layout_constraintTop_toBottomOf="@+id/time"
             />
 
 
@@ -170,6 +176,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

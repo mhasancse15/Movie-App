@@ -56,8 +56,10 @@ class VideoPlayerFragment : Fragment(), Player.EventListener,
 
         binding = FragmentVideoPlayerBinding.bind(view)
 
-
-        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR;
+        binding.videoPlayerToolBar.toolbarTitle.text = "Video Player"
+        binding.videoPlayerToolBar.toolbarBack.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
 
     }
 
@@ -70,7 +72,7 @@ class VideoPlayerFragment : Fragment(), Player.EventListener,
 
     override fun onResume() {
         super.onResume()
-        hideSystemUi()
+       // hideSystemUi()
         if (Util.SDK_INT < 24 || player == null) {
             initializePlayer()
         }
