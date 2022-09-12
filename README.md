@@ -7,7 +7,7 @@
 App uses [OMDb API](https://www.omdbapi.com/) service to load data using retrofit and display on the user screen.<br>
 
 ***Download and test latest version 👇***
-
+[![Movie-App](https://raw.githubusercontent.com/mhasancse15/mhasancse15/main/movie-app.png)](https://github.com/mhasancse15/Movie-App/raw/main/app/release/app-release.apk)
 
 ### Structural design pattern
 The app is built with the Model-View-ViewModel (MVVM) is its structural design pattern that separates objects into three distinct groups:
@@ -29,6 +29,7 @@ The app is built with the Model-View-ViewModel (MVVM) is its structural design p
 
 ## 🚀 Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
 
 ### Prerequisites
 *   Android Studio 3.2+
