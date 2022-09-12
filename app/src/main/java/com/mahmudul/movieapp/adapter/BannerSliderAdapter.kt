@@ -5,15 +5,16 @@ import android.view.ViewGroup
 import com.mahmudul.movieapp.databinding.ListMovieBannerBinding
 import com.mahmudul.movieapp.model.Search
 import com.smarteist.autoimageslider.SliderViewAdapter
- class BannerSliderAdapter(
+
+class BannerSliderAdapter(
     private var bannerList: List<Search>,
-     private val bannerClickListener: AdapterClicklListioners
+    private val bannerClickListener: AdapterClicklListioners
 ) :
     SliderViewAdapter<BannerSliderAdapter.BannerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup): BannerViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = ListMovieBannerBinding.inflate(layoutInflater,parent,false)
+        val binding = ListMovieBannerBinding.inflate(layoutInflater, parent, false)
         return BannerViewHolder(binding)
     }
 

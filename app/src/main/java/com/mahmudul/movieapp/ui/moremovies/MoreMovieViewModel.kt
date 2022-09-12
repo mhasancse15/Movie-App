@@ -11,7 +11,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MoreMovieViewModel @Inject constructor(private val movieRepository: MovieRepository): ViewModel() {
+class MoreMovieViewModel @Inject constructor(private val movieRepository: MovieRepository) :
+    ViewModel() {
 
-    val getBatmanMovieList: LiveData<PagingData<Search>> = movieRepository.getBatmanMovies().cachedIn(viewModelScope)
+    val getBatmanMovieList: LiveData<PagingData<Search>> =
+        movieRepository.getBatmanMovies().cachedIn(viewModelScope)
 }

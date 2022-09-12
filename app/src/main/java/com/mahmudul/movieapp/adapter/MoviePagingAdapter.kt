@@ -6,10 +6,8 @@ import androidx.databinding.library.baseAdapters.BR
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.mahmudul.movieapp.databinding.ListMovieBinding
 import com.mahmudul.movieapp.model.Search
-import com.mahmudul.movieapp.ui.movie.MovieFragment
 
 
 class MoviePagingAdapter(val adapterClicklListioners: AdapterClicklListioners) :

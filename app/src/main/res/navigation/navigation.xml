@@ -8,20 +8,29 @@
     <fragment
         android:id="@+id/movieFragment"
         android:name="com.mahmudul.movieapp.ui.movie.MovieFragment"
-        android:label="fragment_movie"
-        tools:layout="@layout/fragment_movie" >
+        android:label="Movie App"
+        tools:layout="@layout/fragment_movie">
         <action
             android:id="@+id/action_movieFragment_to_movieDetailsFragment"
-            app:destination="@id/movieDetailsFragment" />
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_movieFragment_to_moreMoviesFragment"
-            app:destination="@id/moreMoviesFragment" />
+            app:destination="@id/moreMoviesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
+
     <fragment
         android:id="@+id/movieDetailsFragment"
         android:name="com.mahmudul.movieapp.ui.details.MovieDetailsFragment"
-        android:label="fragment_movie_details"
-        tools:layout="@layout/fragment_movie_details" >
+        android:label="Movie Details"
+        tools:layout="@layout/fragment_movie_details">
 
         <argument
             android:name="imdbID"
@@ -29,18 +38,28 @@
             app:nullable="true" />
         <action
             android:id="@+id/action_movieDetailsFragment_to_videoPlayerFragment"
-            app:destination="@id/videoPlayerFragment" />
+            app:destination="@id/videoPlayerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+
     <fragment
         android:id="@+id/videoPlayerFragment"
         android:name="com.mahmudul.movieapp.ui.videoplayer.VideoPlayerFragment"
-        android:label="VideoPlayerFragment" />
+        android:label="VideoPlayer" />
     <fragment
         android:id="@+id/moreMoviesFragment"
         android:name="com.mahmudul.movieapp.ui.moremovies.MoreMoviesFragment"
-        android:label="MoreMoviesFragment" >
+        android:label="More Movie">
         <action
             android:id="@+id/action_moreMoviesFragment_to_movieDetailsFragment"
-            app:destination="@id/movieDetailsFragment" />
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+
 </navigation>

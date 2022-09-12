@@ -2,11 +2,8 @@ package com.mahmudul.movieapp.ui.moremovies
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -15,46 +12,24 @@ import com.mahmudul.movieapp.R
 import com.mahmudul.movieapp.adapter.AdapterClicklListioners
 import com.mahmudul.movieapp.adapter.MoviePagingAdapter
 import com.mahmudul.movieapp.databinding.FragmentMoreMoviesBinding
-import com.mahmudul.movieapp.databinding.FragmentMovieBinding
 import com.mahmudul.movieapp.model.Search
-import com.mahmudul.movieapp.ui.movie.MovieViewModel
-import com.mahmudul.movieapp.utils.AppUtils
-import com.mahmudul.movieapp.utils.LogData
+import com.mahmudul.movieapp.utils.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
-class MoreMoviesFragment : Fragment() , AdapterClicklListioners {
-    private lateinit var binding: FragmentMoreMoviesBinding
-    val viewModel: MoreMovieViewModel by viewModels()
+class MoreMoviesFragment : Fragment(R.layout.fragment_more_movies), AdapterClicklListioners {
 
+    private var binding: FragmentMoreMoviesBinding by autoCleared()
+    val viewModel: MoreMovieViewModel by viewModels()
     private lateinit var batmanMovieAdapter: MoviePagingAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        batmanMovieAdapter = MoviePagingAdapter(this)
-
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_more_movies, container, false)
-    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentMoreMoviesBinding.bind(view)
+        batmanMovieAdapter = MoviePagingAdapter(this)
         binding.clickListener = this
-        AppUtils.statusBarHeightMeasurement(requireActivity().window, requireActivity(), binding.toolbarView)
-
-        binding.moreMovieFragmentTopLayout.toolbarTitle.text = "More Movie"
-        binding.moreMovieFragmentTopLayout.toolbarBack.setOnClickListener {
-            requireActivity().onBackPressed()
-        }
-
-
 
 
         viewModel.getBatmanMovieList.observe(viewLifecycleOwner) {
@@ -80,8 +55,6 @@ class MoreMoviesFragment : Fragment() , AdapterClicklListioners {
         }
         binding.moreMoviePreViewRecycler.adapter = batmanMovieAdapter
 
-
-       // binding.viewModel = viewModel
     }
 
     override fun clickListioners(movie: Search?) {
@@ -90,6 +63,6 @@ class MoreMoviesFragment : Fragment() , AdapterClicklListioners {
             bundleOf("imdbID" to movie?.imdbID.toString())
         )
 
-        LogData(movie?.imdbID.toString())
+        Timber.d(movie?.imdbID.toString())
     }
 }

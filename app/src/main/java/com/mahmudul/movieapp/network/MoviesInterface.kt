@@ -18,13 +18,6 @@ interface MoviesInterface {
     ): Response<MovieResponse>
 
     @GET("?type=movie")
-    suspend fun getSearchResultData(
-        @Query(value = "s") searchTitle: String,
-        @Query(value = "apiKey") apiKey: String,
-        @Query(value = "page") pageIndex: Int
-    ): Response<MovieResponse>
-
-    @GET("?type=movie")
     suspend fun getBatmanMovies(
         @Query(value = "s") searchTitle: String,
         @Query(value = "apiKey") apiKey: String,

@@ -4,6 +4,7 @@
     xmlns:bind="http://schemas.android.com/tools">
 
     <data>
+
         <import type="com.mahmudul.movieapp.model.Search" />
 
         <variable
@@ -15,24 +16,25 @@
             type="com.mahmudul.movieapp.adapter.AdapterClicklListioners" />
     </data>
 
-        <androidx.cardview.widget.CardView
-            android:layout_margin="2dp"
-            android:id="@+id/card_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:cardCornerRadius="10dp">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <ImageView
             android:id="@+id/rowBannerImageView"
             android:layout_width="match_parent"
             android:layout_height="140dp"
-            android:scaleType="fitXY"
-            bind:loadImage="@{movie.poster}"
             android:onClick="@{(view) -> clickListener.clickListioners(movie)}"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-        </androidx.cardview.widget.CardView>
+            bind:loadImage="@{movie.poster}" />
+    </androidx.cardview.widget.CardView>
 
 </layout>

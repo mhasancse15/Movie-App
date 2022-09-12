@@ -106,6 +106,9 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.12.2'
     implementation 'com.google.android.exoplayer:extension-ima:2.12.2'
 
+    //Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
     //unit testing
     testImplementation 'junit:junit:4.13.2'
 

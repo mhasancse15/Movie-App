@@ -8,7 +8,7 @@ import com.mahmudul.movieapp.network.MoviesInterface
 import com.mahmudul.movieapp.utils.Constants
 
 
-class BatmanMoviePagingSource (val moviesInterface: MoviesInterface): PagingSource<Int, Search>() {
+class BatmanMoviePagingSource(val moviesInterface: MoviesInterface) : PagingSource<Int, Search>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Search> {
         return try {
 
@@ -20,7 +20,7 @@ class BatmanMoviePagingSource (val moviesInterface: MoviesInterface): PagingSour
 
             )
 
-            val data :ArrayList<Search> =
+            val data: ArrayList<Search> =
                 response.Search as ArrayList<Search> // List of results from the API
 
             LoadResult.Page(

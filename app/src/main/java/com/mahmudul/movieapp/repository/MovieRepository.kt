@@ -15,9 +15,13 @@ import javax.inject.Inject
 
 class MovieRepository @Inject constructor(val moviesInterface: MoviesInterface) {
 
-   suspend fun getBannerMovies(apiKey: String, s: String, pageNo: String): Response<MovieResponse>{
-       return moviesInterface.getBannerMovies( apiKey, s, pageNo)
-   }
+    suspend fun getBannerMovies(
+        apiKey: String,
+        s: String,
+        pageNo: String
+    ): Response<MovieResponse> {
+        return moviesInterface.getBannerMovies(apiKey, s, pageNo)
+    }
 
     fun getBatmanMovies(): LiveData<PagingData<Search>> = Pager(
         config = PagingConfig(
@@ -31,7 +35,7 @@ class MovieRepository @Inject constructor(val moviesInterface: MoviesInterface) 
 
     ).liveData
 
-    suspend fun getMovieDetails(movieId: String, apiKey: String): Response<MovieDetail>{
+    suspend fun getMovieDetails(movieId: String, apiKey: String): Response<MovieDetail> {
         return moviesInterface.getMovieDetailData(movieId, apiKey)
     }
 

@@ -16,12 +16,14 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class MovieViewModel @Inject constructor( private val movieRepository: MovieRepository): ViewModel() {
+class MovieViewModel @Inject constructor(private val movieRepository: MovieRepository) :
+    ViewModel() {
 
     lateinit var bannerData: MutableLiveData<Resource<MovieResponse>>
     var bannerResponseData: MovieResponse? = null
 
-    val getBatmanMovieList: LiveData<PagingData<Search>> = movieRepository.getBatmanMovies().cachedIn(viewModelScope)
+    val getBatmanMovieList: LiveData<PagingData<Search>> =
+        movieRepository.getBatmanMovies().cachedIn(viewModelScope)
 
     fun getBannerList(): LiveData<Resource<MovieResponse>> {
         bannerData = MutableLiveData<Resource<MovieResponse>>()
@@ -29,11 +31,11 @@ class MovieViewModel @Inject constructor( private val movieRepository: MovieRepo
         viewModelScope.launch {
             // Coroutine that will be canceled when the ViewModel is cleared.
             bannerData.postValue(Resource.LOADING())
-                movieRepository.getBannerMovies(Constants.API_KEY, "avengers", "1").let {
-                    if (it.isSuccessful) {
-                        bannerData.postValue(handleResponse(it))
-                        bannerResponseData=it.body()
-                    } else bannerData.postValue(Resource.Error(it.code().toString()))
+            movieRepository.getBannerMovies(Constants.API_KEY, "avengers", "1").let {
+                if (it.isSuccessful) {
+                    bannerData.postValue(handleResponse(it))
+                    bannerResponseData = it.body()
+                } else bannerData.postValue(Resource.Error(it.code().toString()))
 
             }
         }

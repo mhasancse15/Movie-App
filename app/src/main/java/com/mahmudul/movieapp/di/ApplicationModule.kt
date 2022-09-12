@@ -53,7 +53,7 @@ class ApplicationModule {
 
     @Singleton
     @Provides
-    fun provideRepository(moviesInterface: MoviesInterface): MovieRepository{
+    fun provideRepository(moviesInterface: MoviesInterface): MovieRepository {
         return MovieRepository(moviesInterface)
     }
 

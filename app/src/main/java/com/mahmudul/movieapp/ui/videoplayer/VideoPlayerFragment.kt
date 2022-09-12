@@ -1,12 +1,8 @@
 package com.mahmudul.movieapp.ui.videoplayer
 
-import android.annotation.SuppressLint
-import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.ads.interactivemedia.v3.api.AdErrorEvent
 import com.google.ads.interactivemedia.v3.api.AdEvent
@@ -22,13 +18,13 @@ import com.google.android.exoplayer2.util.MimeTypes
 import com.google.android.exoplayer2.util.Util
 import com.mahmudul.movieapp.R
 import com.mahmudul.movieapp.databinding.FragmentVideoPlayerBinding
-import com.mahmudul.movieapp.utils.AppUtils
+import com.mahmudul.movieapp.utils.autoCleared
 
 
-class VideoPlayerFragment : Fragment(), Player.EventListener,
+class VideoPlayerFragment : Fragment(R.layout.fragment_video_player), Player.EventListener,
     AdErrorEvent.AdErrorListener, AdEvent.AdEventListener {
 
-    private lateinit var binding: FragmentVideoPlayerBinding
+    private var binding: FragmentVideoPlayerBinding by autoCleared()
 
     private var player: SimpleExoPlayer? = null
     private var playWhenReady = true
@@ -40,28 +36,10 @@ class VideoPlayerFragment : Fragment(), Player.EventListener,
         "http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator="
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_video_player, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentVideoPlayerBinding.bind(view)
-        AppUtils.statusBarHeightMeasurement(requireActivity().window, requireActivity(), binding.toolbarView)
-
-        binding.videoPlayerToolBar.toolbarTitle.text = "Video Player"
-        binding.videoPlayerToolBar.toolbarBack.setOnClickListener {
-            requireActivity().onBackPressed()
-        }
 
     }
 
@@ -74,7 +52,7 @@ class VideoPlayerFragment : Fragment(), Player.EventListener,
 
     override fun onResume() {
         super.onResume()
-       // hideSystemUi()
+        // hideSystemUi()
         if (Util.SDK_INT < 24 || player == null) {
             initializePlayer()
         }
@@ -113,16 +91,6 @@ class VideoPlayerFragment : Fragment(), Player.EventListener,
 
     override fun onAdError(adErrorEvent: AdErrorEvent?) {
         adErrorEvent?.error?.message?.let { Log.d("ADS", "AdError listener :: $it!!") }
-    }
-
-    @SuppressLint("InlinedApi")
-    private fun hideSystemUi() {
-        binding.videoPlayer.systemUiVisibility = (View.SYSTEM_UI_FLAG_LOW_PROFILE
-                or View.SYSTEM_UI_FLAG_FULLSCREEN
-                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)
     }
 
     private fun releasePlayer() {

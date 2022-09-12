@@ -18,16 +18,17 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class MovieDetailsViewModel @Inject constructor(private val movieRepository: MovieRepository): ViewModel() {
+class MovieDetailsViewModel @Inject constructor(private val movieRepository: MovieRepository) :
+    ViewModel() {
 
     private val _movieDetailsResponse = MutableLiveData<Resource<MovieDetail>>()
     var movieDetailsResponse: LiveData<Resource<MovieDetail>> = _movieDetailsResponse
     var movieDetailsModel: MovieDetail? = null
 
-    fun getMovieDetailsData(movieId: String){
+    fun getMovieDetailsData(movieId: String) {
         _movieDetailsResponse.postValue(Resource.LOADING())
         viewModelScope.launch {
-            val response = movieRepository.getMovieDetails(movieId,Constants.API_KEY)
+            val response = movieRepository.getMovieDetails(movieId, Constants.API_KEY)
             _movieDetailsResponse.postValue(handleResponse(response))
         }
     }

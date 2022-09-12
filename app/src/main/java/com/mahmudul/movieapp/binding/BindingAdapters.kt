@@ -1,7 +1,6 @@
 package com.mahmudul.movieapp.binding
 
 import android.graphics.Color
-import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import coil.load
@@ -15,7 +14,6 @@ import com.mahmudul.movieapp.model.Search
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
-import java.util.*
 import kotlin.collections.ArrayList
 
 
