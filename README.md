@@ -27,6 +27,14 @@ The app is built with the Model-View-ViewModel (MVVM) is its structural design p
 - [Coil-kt](https://coil-kt.github.io/coil/) - An image loading library for Android backed by Kotlin Coroutines.
 - [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android.
 
+
+## Screenshot
+
+|              Home Screen             |               More Movie Screen               |               Movie Player Screen               |
+| :----------------------------------: | :---------------------------------------: | :---------------------------------------: |
+|    ![](https://raw.githubusercontent.com/mhasancse15/mhasancse15/main/Screenshot_20220912-225609_MovieApp-omdbapi.jpg)    |     ![](https://raw.githubusercontent.com/mhasancse15/mhasancse15/main/Screenshot_20220912-225618_MovieApp-omdbapi.jpg)      |      ![](https://raw.githubusercontent.com/mhasancse15/mhasancse15/main/Screenshot_20220912-225636_MovieApp-omdbapi.jpg)     |
+
+
 ## 🚀 Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
