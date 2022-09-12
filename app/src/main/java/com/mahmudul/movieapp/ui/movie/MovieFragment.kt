@@ -18,6 +18,7 @@ import com.mahmudul.movieapp.adapter.AdapterClicklListioners
 import com.mahmudul.movieapp.adapter.MoviePagingAdapter
 import com.mahmudul.movieapp.databinding.FragmentMovieBinding
 import com.mahmudul.movieapp.model.Search
+import com.mahmudul.movieapp.utils.AppUtils
 import com.mahmudul.movieapp.utils.LogData
 import com.mahmudul.movieapp.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,6 +52,7 @@ class MovieFragment : Fragment(), AdapterClicklListioners {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentMovieBinding.bind(view)
+        AppUtils.statusBarHeightMeasurement(requireActivity().window, requireActivity(), binding.toolbarView)
         binding.clickListener = this
         recyclerviewItemScreen()
 

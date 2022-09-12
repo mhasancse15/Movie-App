@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:bind="http://schemas.android.com/tools">
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.mahmudul.movieapp.ui.movie.MovieViewModel" />
@@ -20,29 +21,40 @@
         android:background="#f9f9f9"
         tools:context=".ui.movie.MovieFragment">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:elevation="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:popupTheme="@style/Theme.MovieAppomdbapi.PopupOverlay">
-            <TextView
-                android:id="@+id/toolbar_title"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:gravity="start"
-                android:text="@string/app_name"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="25dp"
-                android:layout_gravity="center" />
+                android:background="@color/white"
+                android:elevation="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:popupTheme="@style/Theme.MovieAppomdbapi.PopupOverlay">
 
-        </androidx.appcompat.widget.Toolbar>
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="25dp"
+                    android:gravity="start"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.smarteist.autoimageslider.SliderView
             android:id="@+id/movieFragmentImageSlider"
@@ -50,7 +62,7 @@
             android:layout_height="140dp"
             android:layout_margin="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarView"
             app:sliderAnimationDuration="600"
             app:sliderAutoCycleDirection="back_and_forth"
             app:sliderAutoCycleEnabled="true"
@@ -64,8 +76,8 @@
             app:sliderIndicatorUnselectedColor="#FFF"
             app:sliderScrollTimeInSec="1"
             app:sliderStartAutoCycle="true"
-            bind:slideBannerResponse="@{viewModel.bannerResponseData}"
-            bind:bannerClickListener="@{clickListener}"/>
+            bind:bannerClickListener="@{clickListener}"
+            bind:slideBannerResponse="@{viewModel.bannerResponseData}" />
 
 
         <TextView
@@ -75,24 +87,23 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
             android:text="@string/batman_movies"
-            android:textSize="15sp"
             android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/movieFragmentImageSlider"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/movieFragmentImageSlider" />
 
         <TextView
             android:id="@+id/moreMovieTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
             android:text="More >"
-            android:textSize="15sp"
             android:textColor="@android:color/black"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/movieFragmentImageSlider"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/movieFragmentImageSlider" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movieRecyclerView"
@@ -101,21 +112,21 @@
             android:layout_marginHorizontal="4dp"
             android:layout_marginTop="8dp"
             android:orientation="horizontal"
-            tools:itemCount="9"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/movieTextView"
+            tools:itemCount="9"
             tools:listitem="@layout/list_movie" />
 
-        <TextView
+      <!--  <TextView
             android:id="@+id/filterMovieTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
             android:text="@string/latest_movies"
-            android:textSize="15sp"
             android:textColor="@android:color/black"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/movieRecyclerView" />
 
@@ -129,7 +140,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/filterMovieTextView"
-            tools:listitem="@layout/list_movie" />
+            tools:listitem="@layout/list_movie" />-->
 
         <ProgressBar
             android:id="@+id/movie_progress"

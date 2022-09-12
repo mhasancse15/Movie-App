@@ -18,6 +18,7 @@ import com.mahmudul.movieapp.databinding.FragmentMoreMoviesBinding
 import com.mahmudul.movieapp.databinding.FragmentMovieBinding
 import com.mahmudul.movieapp.model.Search
 import com.mahmudul.movieapp.ui.movie.MovieViewModel
+import com.mahmudul.movieapp.utils.AppUtils
 import com.mahmudul.movieapp.utils.LogData
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,6 +47,7 @@ class MoreMoviesFragment : Fragment() , AdapterClicklListioners {
 
         binding = FragmentMoreMoviesBinding.bind(view)
         binding.clickListener = this
+        AppUtils.statusBarHeightMeasurement(requireActivity().window, requireActivity(), binding.toolbarView)
 
         binding.moreMovieFragmentTopLayout.toolbarTitle.text = "More Movie"
         binding.moreMovieFragmentTopLayout.toolbarBack.setOnClickListener {

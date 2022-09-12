@@ -8,8 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:elevation="5dp"
-        app:popupTheme="@style/Theme.MovieAppomdbapi.PopupOverlay">
+        android:elevation="5dp">
         <ImageView
             android:id="@+id/toolbar_back"
             android:layout_width="wrap_content"
@@ -20,8 +19,6 @@
             android:gravity="center"
             android:scaleType="centerCrop"
             app:tint="@color/black"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="25dp"
             android:contentDescription="@string/app_name" />
         <TextView
             android:id="@+id/toolbar_title"
@@ -31,8 +28,6 @@
             android:textColor="@color/black"
             android:gravity="center"
             tools:text="Title"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="25dp"
             android:layout_gravity="center" />
 
     </androidx.appcompat.widget.Toolbar>

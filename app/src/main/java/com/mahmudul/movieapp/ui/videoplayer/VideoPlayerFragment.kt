@@ -22,6 +22,7 @@ import com.google.android.exoplayer2.util.MimeTypes
 import com.google.android.exoplayer2.util.Util
 import com.mahmudul.movieapp.R
 import com.mahmudul.movieapp.databinding.FragmentVideoPlayerBinding
+import com.mahmudul.movieapp.utils.AppUtils
 
 
 class VideoPlayerFragment : Fragment(), Player.EventListener,
@@ -55,6 +56,7 @@ class VideoPlayerFragment : Fragment(), Player.EventListener,
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentVideoPlayerBinding.bind(view)
+        AppUtils.statusBarHeightMeasurement(requireActivity().window, requireActivity(), binding.toolbarView)
 
         binding.videoPlayerToolBar.toolbarTitle.text = "Video Player"
         binding.videoPlayerToolBar.toolbarBack.setOnClickListener {

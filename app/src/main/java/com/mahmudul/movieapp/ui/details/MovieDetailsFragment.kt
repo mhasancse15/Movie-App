@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -25,6 +26,7 @@ import com.google.android.exoplayer2.util.MimeTypes
 import com.google.android.exoplayer2.util.Util
 import com.mahmudul.movieapp.R
 import com.mahmudul.movieapp.databinding.FragmentMovieDetailsBinding
+import com.mahmudul.movieapp.utils.AppUtils
 import com.mahmudul.movieapp.utils.LogData
 import com.mahmudul.movieapp.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -58,6 +60,8 @@ class MovieDetailsFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentMovieDetailsBinding.bind(view)
+
+        AppUtils.statusBarHeightMeasurement(requireActivity().window, requireActivity(), binding.toolbarView)
 
         val data = args.imdbID
         LogData(data.toString())
